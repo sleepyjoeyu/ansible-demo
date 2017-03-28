@@ -1,0 +1,13 @@
+---
+- name: Clean and start apache demo environment
+  hosts: test 
+  gather_facts: True 
+  tasks:
+  - name: remove the apache package
+    package: name=httpd state=absent
+  - name: get files in /var/www/html
+    shell: ls /var/www/html/
+    register: path_files
+  - name: clean files 
+    file: path="/var/www/html/{{item}}" state=absent
+    with_items: "{{path_files.stdout_lines}}"

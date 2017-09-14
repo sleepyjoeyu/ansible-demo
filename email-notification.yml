@@ -1,0 +1,16 @@
+---
+- name: mail notification 
+  hosts: localhost
+  remote_user: root
+  vars:
+    mailmsg: The job is done successfully!
+
+  tasks:
+  - name: send a mail
+    mail:
+      host: localhost
+      port: 25
+      to: Joe Yu <sleepyjoeyu@gmail.com>
+      subject: Important notification form Ansible
+      body: "{{ mailmsg }}"
+

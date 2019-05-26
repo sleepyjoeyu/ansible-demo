@@ -16,7 +16,7 @@
   - name: copy png files
     copy: src=./img/{{pic}} dest=/var/www/html/
   - name: start httpd
-    service: name=httpd state=running
+    service: name=httpd state=started
 
   handlers:
   - name: record_change

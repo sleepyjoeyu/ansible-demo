@@ -5,7 +5,6 @@
   vars:    
     words: Ansible is very good tool!!    
     pic: ansible.png
-  remote_user: root
 
   tasks:
   - name: install httpd

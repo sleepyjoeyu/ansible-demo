@@ -16,7 +16,13 @@
     copy: src=./img/{{pic}} dest=/var/www/html/
   - name: start httpd
     service: name=httpd state=started
-
+  - name: enable http in firewalld
+    firewalld:
+      service: http
+      permanent: yes
+      immediate: yes
+      state: enabled
+      
   handlers:
   - name: record_change
     shell: echo "webpage change at $(date)" >> /var/www/html/record_change.log
